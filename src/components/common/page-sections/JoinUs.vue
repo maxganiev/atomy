@@ -66,7 +66,7 @@ async function onSubmit(e) {
 		store.setShowSendMsgResultModal(true);
 		if (res.ok) {
 			store.setSendMsgText('Сообщение отправлено, до встречи!');
-			resetMemberFields();
+			//resetMemberFields();
 		} else throw new Error('Что-то пошло не по плану (');
 	} catch (error) {
 		store.setSendMsgText(error);
