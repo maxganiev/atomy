@@ -1,0 +1,46 @@
+@use './font-sizes.scss';
+
+.btn {
+	@extend .fs-sm-md;
+	min-width: 150px;
+	max-width: 250px;
+	width: 40%;
+	height: 40px;
+	text-transform: uppercase;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	font-weight: 700;
+
+	&:hover {
+		opacity: 0.8;
+		transition: opacity 0.35s ease-in;
+		cursor: pointer;
+	}
+
+	&:disabled {
+		opacity: 0.4;
+		cursor: not-allowed;
+	}
+
+	&-info {
+		background-color: theme('colors.sky.200');
+		color: theme('colors.gray.700');
+	}
+
+	&-primary {
+		background-color: theme('colors.atomy-blue-primary');
+		color: theme('colors.white');
+	}
+
+	&-success {
+		background-color: theme('colors.green.400');
+		color: theme('colors.gray.600');
+	}
+}
+
+.link {
+	text-decoration: none;
+}

@@ -1,0 +1,42 @@
+<html lang='ru'>
+	<head>
+		<meta charset='utf-8' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<meta name='viewport' content='width=device-width' />
+		<meta name='generator' content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<form
+			id='form-parse-site'
+			style='display: flex; flex-direction: column; height: 20vh; justify-content: space-evenly; align-items: center;'
+		>
+			<label>Введи ссылку на страничку, которую нужно клонировать</label>
+			<input type='text' />
+			<input type='submit' value='Клонировать!' />
+		</form>
+
+		<a style='display: block; width: 50%; margin: 0 auto; text-align: center;' href='/'
+			>Просмотреть клонированную страничку</a
+		>
+	</body>
+
+	<script type='module'>
+		document.getElementById('form-parse-site').onsubmit = async (e) => {
+			e.preventDefault();
+			const siteUrl = e.target.children[1].value,
+				pageSavePath = 'public/parsed/index/index.html';
+
+			const formData = new FormData();
+			formData.append('siteUrl', siteUrl);
+			formData.append('pageSavePath', pageSavePath);
+
+			const response = await fetch('/api/parse-site', {
+				method: 'POST',
+				body: formData,
+			});
+			const data = await response.json();
+			console.log(data);
+		};
+	</script>
+</html>

@@ -1,0 +1,29 @@
+@use './font-sizes.scss';
+@use './font-faces.scss';
+@use './buttons.scss';
+@use './forms.scss';
+
+body {
+	font-family: 'Montserrat', sans-serif !important;
+	background-color: theme('colors.gray.50');
+}
+
+*::-webkit-scrollbar {
+	display: none;
+}
+
+* {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.active-breadcrumb {
+	font-weight: 500;
+	transition: all 0.4s ease-out;
+	border-bottom: 1px solid theme('colors.atomy-blue-primary');
+	padding-bottom: 1px;
+}
+
+strong {
+	font-weight: 500;
+}
