@@ -92,13 +92,13 @@ function resetMemberFields() {
 						class="flex flex-col bg-gray-200 fs-sm-md text-gray-700 rounded-xl p-4 w-full"
 						@submit="onSubmit"
 					>
-						<label for="">Как тебя зовут?</label>
+						<label class="mt-4 mb-2" for="">Как тебя зовут?</label>
 						<input type="text" class="form-item w-full" v-model="newMember.name" />
 
-						<label for="">Откуда ты?</label>
+						<label class="mt-4 mb-2" for="">Откуда ты?</label>
 						<input type="text" class="form-item w-full" v-model="newMember.city" />
 
-						<label for="">Твой контактный номер телефона для связи</label>
+						<label class="mt-4 mb-2" for="">Твой контактный номер телефона для связи</label>
 						<phone-input @onInput="(phone) => (newMember.phone = phone)" />
 
 						<input
