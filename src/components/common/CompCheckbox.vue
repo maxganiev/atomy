@@ -31,6 +31,7 @@ function onChange(e) {
 		class="relative w-8 aspect-square cursor-pointer rounded-lg focus:outline focus:outline-1 focus:outline-offset-1 focus:outline-sky-400 overflow-hidden select-none"
 		@click="onChange"
 		role="checkbox"
+		:aria-checked="checked"
 		tabindex="0"
 	>
 		<input type="checkbox" class="w-full h-full absolute top-0 left-0 invisible z-10" ref="DOMCheckbox" />
