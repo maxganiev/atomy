@@ -40,7 +40,7 @@ function setShowDescription() {
 }
 
 const logoCssClass = computed(() => 'atomy-transition-view ' + (!showLogo.value ? 'out-of-view-y' : 'in-view-y'));
-const jarMaskCssClass = computed(() => (!showJarImage.value ? 'scale-0' : 'scale-1'));
+const jarMaskCssClass = computed(() => 'atomy-transition-view ' + (!showJarImage.value ? 'unscaled' : 'scaled'));
 const descriptionCssClass = computed(
 	() => 'atomy-transition-view ' + (!showDescription.value ? 'out-of-view-x' : 'in-view-x')
 );
@@ -104,14 +104,12 @@ const descriptionCssClass = computed(
 	transform: translateX(0);
 }
 
-.scale-0 {
+.unscaled {
 	transform: rotate(25deg) scale(0);
-	transition: transform 0.45s ease-out;
 }
 
-.scale-1 {
+.scaled {
 	transform: rotate(25deg) scale(1);
-	transition: transform 0.45s ease-out;
 }
 
 .atomy-description {
