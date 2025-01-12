@@ -11,7 +11,7 @@ const newMember = reactive({
 	phone: ''
 });
 
-const isValidPhoneLength = 16;
+const isValidPhoneLength = 12;
 
 const agreedToTerms = ref(false);
 const submitDisabled = computed(
@@ -22,6 +22,8 @@ const submitDisabled = computed(
 );
 
 const showSuccessModal = ref(false);
+
+const DOMPhoneInput = ref(null);
 
 async function onSubmit(e) {
 	e.preventDefault();
@@ -34,7 +36,7 @@ async function onSubmit(e) {
 	try {
 		const date = new Date();
 		let month = date.getMonth() + 1;
-		month = month < 10 ? '0' + month : month;
+		month = month < 10 ? `0${month}` : month;
 
 		const postData = `
 		<pre>
@@ -66,7 +68,7 @@ async function onSubmit(e) {
 		store.setShowSendMsgResultModal(true);
 		if (res.ok) {
 			store.setSendMsgText('Сообщение отправлено, до встречи!');
-			//resetMemberFields();
+			resetMemberFields();
 		} else throw new Error('Что-то пошло не по плану (');
 	} catch (error) {
 		store.setSendMsgText(error);
@@ -74,7 +76,8 @@ async function onSubmit(e) {
 }
 
 function resetMemberFields() {
-	Object.keys(newMember).forEach((key) => (newMember[key] = ''));
+	newMember.name = newMember.city = '';
+	DOMPhoneInput.value.onReset();
 }
 </script>
 
@@ -99,7 +102,7 @@ function resetMemberFields() {
 						<input type="text" class="form-item w-full" v-model="newMember.city" />
 
 						<label class="mt-4 mb-2" for="">Твой контактный номер телефона для связи</label>
-						<phone-input @onInput="(phone) => (newMember.phone = phone)" />
+						<phone-input @onInput="(phone) => (newMember.phone = phone)" ref="DOMPhoneInput" />
 
 						<input
 							type="submit"
@@ -109,7 +112,7 @@ function resetMemberFields() {
 						/>
 					</form>
 
-					<div class="flex text-gray-700 items-center xs-height:pb-8 pt-8 fs-sm-md">
+					<div class="flex text-gray-700 items-center py-8 fs-sm-md">
 						<comp-checkbox
 							:checkIn="agreedToTerms"
 							@onChange="(val) => (agreedToTerms = val)"

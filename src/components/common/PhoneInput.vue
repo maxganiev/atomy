@@ -39,9 +39,12 @@ const phoneParts = ref([
 ]);
 
 const DOMPhoneMask = ref(null);
+
 const emits = defineEmits({
 	onInput: null
 });
+
+defineExpose({ onReset });
 
 onMounted(() => onInput());
 
@@ -49,7 +52,7 @@ watch(phoneParts.value, () => {
 	onInput();
 });
 
-const phoneValue = computed(() => '+7' + phoneParts.value.map((n) => n.value).join('-'));
+const phoneValue = computed(() => '+7' + phoneParts.value.map((n) => n.value).join(''));
 
 function onInput() {
 	if (!DOMPhoneMask.value) return;
@@ -77,11 +80,15 @@ function validateInput(item) {
 function moveAutoFocus(/**@type {Number*/ partIdxToFocus) {
 	DOMPhoneMask.value.children[partIdxToFocus].focus();
 }
+
+function onReset() {
+	phoneParts.value.forEach((obj) => (obj.value = ''));
+}
 </script>
 
 <template>
 	<div
-		class="grid grid-cols-[minmax(3rem,_5%)_20%_20%_minmax(3rem,_8%)_minmax(3rem,_8%)] gap-2 w-full min-h-14 max-h-20"
+		class="grid grid-cols-[minmax(3rem,_5%)_20%_20%_minmax(3rem,_8%)_minmax(3rem,_8%)] gap-1 w-full min-h-14 max-h-20"
 		ref="DOMPhoneMask"
 	>
 		<input
