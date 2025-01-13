@@ -10,14 +10,16 @@ const sliderEl = ref(null),
 	scrollLeftwards = ref(true),
 	scrollLeftVal = ref(0);
 
-function onScroll() {
+async function onScroll() {
 	scrollLeftwards.value = scrollLeftVal.value < sliderEl.value.scrollLeft;
 	scrollLeftVal.value = sliderEl.value.scrollLeft;
 
-	const scrolledWidth = Number((sliderEl.value.getBoundingClientRect().width * currentSlideIdx.value).toFixed(0)),
-		scrollLeft = Number(sliderEl.value.scrollLeft.toFixed(0));
-
-	isScrolling.value = scrolledWidth !== scrollLeft && scrolledWidth !== scrollLeft - 1;
+	isScrolling.value = true;
+	isScrolling.value = await new Promise((resolve) =>
+		setTimeout(() => {
+			resolve(false);
+		}, 650)
+	);
 }
 
 function scrollRight() {

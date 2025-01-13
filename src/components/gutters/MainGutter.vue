@@ -21,7 +21,7 @@ const gutterCssClass = computed(() => {
 
 	if (x) return isMobile.value ? 'px-1' : 'px-6';
 	if (y) return isMobile.value ? 'py-1' : 'py-6';
-	return isMobile.value ? 'p-1' : 'px-6 py-6';
+	return isMobile.value ? 'p-1' : 'p-6';
 });
 </script>
 

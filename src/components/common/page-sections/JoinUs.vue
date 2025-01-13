@@ -106,7 +106,7 @@ function resetMemberFields() {
 
 						<input
 							type="submit"
-							class="btn btn-success"
+							class="btn btn-success mt-4"
 							:disabled="submitDisabled"
 							value="Отправить"
 						/>

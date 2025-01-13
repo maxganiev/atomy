@@ -88,7 +88,7 @@ function onReset() {
 
 <template>
 	<div
-		class="grid grid-cols-[minmax(3rem,_5%)_20%_20%_minmax(3rem,_8%)_minmax(3rem,_8%)] gap-1 w-full min-h-14 max-h-20"
+		class="grid grid-cols-[minmax(3rem,_5%)_20%_20%_minmax(3rem,_8%)_minmax(3rem,_8%)] gap-1 w-full max-h-20"
 		ref="DOMPhoneMask"
 	>
 		<input
