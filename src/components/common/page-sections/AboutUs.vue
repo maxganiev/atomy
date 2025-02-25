@@ -113,7 +113,7 @@ function showActiveMemberInfo() {
 				</div>
 
 				<div class="text-gray fs-sm-md gap-y-4 w-full pt-6 md:pt-10 px-3 grid grid-cols-1">
-					<div class="grid grid-cols-2 md:grid-cols-4 xs-height:grid-cols-4 gap-y-4 fs-sm">
+					<div class="grid grid-cols-1 md:grid-cols-1 xs-height:grid-cols-4 gap-y-4 fs-sm">
 						<div>
 							<strong>ФИО</strong>
 							<p>{{ activeMember.fullName }}</p>
@@ -124,12 +124,12 @@ function showActiveMemberInfo() {
 							<p>{{ activeMember.inTeamSince }}</p>
 						</div>
 
-						<div>
+						<!-- <div>
 							<strong>Роль</strong>
 							<p>{{ activeMember.role }}</p>
-						</div>
+						</div> -->
 
-						<div>
+						<!-- <div>
 							<strong> Личные достижения</strong>
 							<ul
 								v-if="activeMember.personalAchievements.length"
@@ -145,12 +145,14 @@ function showActiveMemberInfo() {
 							<span v-else class="block text-gray-600 fs-sm"
 								>У нас еще все впереди! 🤗</span
 							>
-						</div>
-					</div>
+						</div> -->
 
-					<div class="relative about-wrapper hidden md:block fs-sm">
-						<strong>Об Участнике</strong>
-						<p class="text-gray-600 fs-sm">{{ activeMember.about.slice(0, 100) + '...' }}</p>
+						<div class="relative about-wrapper hidden md:block fs-sm">
+							<strong>Об Участнике</strong>
+							<p class="text-gray-600 fs-sm">{{
+								activeMember.about.slice(0, 100) + '...'
+							}}</p>
+						</div>
 					</div>
 
 					<button class="btn btn-info mt-2 xs-height:mt-0" @click="showActiveMemberInfo"

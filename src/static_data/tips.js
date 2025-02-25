@@ -2,6 +2,10 @@ function imagePath(imageName = '') {
 	return '/assets/images/svg/' + imageName;
 }
 
+function videoPath(videoName = '') {
+	return '/assets/videos/' + videoName + '.mp4';
+}
+
 export const tips = [
 	{
 		id: 1,
@@ -46,7 +50,9 @@ export const tips = [
 	{
 		id: 7,
 		title: '... и т.д.',
-		description: '<p></p>',
+		description: `<video controls src="${videoPath(
+			'mp'
+		)}" class="w-4/5 mt-12 xs-height:h-1/2 xs-height:mt-6 mx-auto"></video>`,
 		icon: null
 	}
 ];

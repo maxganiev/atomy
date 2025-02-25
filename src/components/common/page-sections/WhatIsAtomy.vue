@@ -67,11 +67,19 @@ const descriptionCssClass = computed(
 
 			<div class="relative atomy-description" :class="descriptionCssClass">
 				<p class="text-gray-900 fs-sm-md">
-					<strong>ATOMY</strong> - это крутая компания по производству косметики (здесь нужен
-					какой-то текст на 4-5 предложений) Lorem ipsum dolor sit amet consectetur, adipisicing
-					elit. Fugiat perspiciatis et earum voluptate nemo repudiandae alias similique harum quas
-					adipisci itaque, laudantium libero, assumenda fugit quos, debitis doloremque excepturi
-					nihil natus quod vitae maiores fuga tempora. Asperiores possimus voluptatem impedit.
+					<strong>ATOMY</strong> - это Южнокорейский бренд, занимающийся выпуском уходовой
+					косметики, бытовой химии для дома и биоактивных добавок (БАД) высочайшего качества. Свою
+					историю ведет с 2009 года, в России первое представительство появилось в 2018 году.
+					Компания выбрала для себя способ реализации товаров посредством
+					<a
+						href="http://www.sberbank.ru/ru/s_m_business/pro_business/chto-takoe-mlm-biznes-otvechaem-prostymi-slovami/"
+						target="_blank"
+						class="font-bold"
+						>MLM</a
+					>, что Позволяет покупателю не только преобретать первоклассную продукцию, но и
+					зарабатывать на этом (причем выйти на стабильный, постоянно растущий доход более чем
+					реально за короткое время). Ниже пошагово расскажем, как это работает и что нужно делать.
+					Листай! 🤗
 				</p>
 
 				<a href="https://www.atomy.ru/ru/Home" target="_blank" class="btn btn-info link mt-8"

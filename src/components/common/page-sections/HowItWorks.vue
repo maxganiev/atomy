@@ -3,6 +3,14 @@ import PageSectionWrapper from '@page-sections/PageSectionWrapper.vue';
 import { ref } from 'vue';
 import { tips } from '@static_data/tips';
 
+function pause(tmt = 650) {
+	return new Promise((resolve) =>
+		setTimeout(() => {
+			resolve(false);
+		}, tmt)
+	);
+}
+
 /**@type {HTMLDivElement}*/
 const sliderEl = ref(null),
 	currentSlideIdx = ref(0),
@@ -15,29 +23,52 @@ async function onScroll() {
 	scrollLeftVal.value = sliderEl.value.scrollLeft;
 
 	isScrolling.value = true;
-	isScrolling.value = await new Promise((resolve) =>
-		setTimeout(() => {
-			resolve(false);
-		}, 650)
-	);
+	isScrolling.value = await pause();
 }
 
 function scrollRight() {
 	sliderEl.value.scrollBy({
-		left: sliderEl.value.getBoundingClientRect().width,
+		left: Number(sliderEl.value.getBoundingClientRect().width.toFixed(0)),
 		top: 0,
 		behavior: 'smooth'
 	});
+
 	currentSlideIdx.value++;
 }
 
 function scrollLeft() {
 	sliderEl.value.scrollBy({
-		left: -sliderEl.value.getBoundingClientRect().width,
+		left: -Number(sliderEl.value.getBoundingClientRect().width.toFixed(0)),
 		top: 0,
 		behavior: 'smooth'
 	});
+
 	currentSlideIdx.value--;
+}
+
+function onWheel(e) {
+	const isHorizontalWheel = Boolean(parseInt(e.deltaX));
+	if (isHorizontalWheel) e.preventDefault();
+}
+
+let touchX = 0,
+	touchY = 0;
+function onTouch(e) {
+	const changedTouches = e.changedTouches[0];
+	const currTouchX = changedTouches.clientX;
+	const currTouchY = changedTouches.clientY;
+
+	const deltaX = Math.abs(currTouchX - touchX);
+	const deltaY = Math.abs(currTouchY - touchY);
+
+	//console.log('currTouchX: ', currTouchX, 'touchX: ', touchX, 'currTouchY: ', currTouchY, 'touchY: ', touchY);
+
+	touchX = currTouchX;
+	touchY = currTouchY;
+
+	const isHorizontalTouch = deltaX > deltaY;
+
+	if (isHorizontalTouch) e.preventDefault();
 }
 </script>
 
@@ -45,10 +76,12 @@ function scrollLeft() {
 	<page-section-wrapper>
 		<div class="flex flex-col h-full relative how-works-wrapper">
 			<div
-				class="w-full relative slider-body pointer-events-none grid"
+				class="w-full relative slider-body grid"
 				:style="{ 'grid-template-columns': `repeat(${tips.length}, 100%)` }"
 				ref="sliderEl"
 				@scroll="onScroll"
+				@wheel="onWheel"
+				@touchstart="onTouch"
 			>
 				<div
 					v-for="tip in tips"
